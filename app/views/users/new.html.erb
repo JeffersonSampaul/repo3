@@ -1,0 +1,38 @@
+<%= simple_form_for @user, url: users_path, method: :post do |f| %> 
+
+  <h1>Sign up</h1>
+  <% if @user.errors.any? %>
+  <%= debug(@user.errors) %>
+    <div class="error_messages">
+      <h2>Form is invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# = f.input :user_name, label: "UserName", placeholder: "Enter your name here" %>
+  <%# = f.input :email, label: "E-mail", placeholder: "Enter your e-mail here" %>
+  <%# = f.input :password, hint: "No special charecters" %>
+  <%# = f.input :password_confirmation, hint: "As same as password" %>
+  <%# = f.input :remember_me, inline_label: "Yes, remember me" %>
+  <%# = f.button :submit %>
+  <%= f.label :username %>
+  <%= f.text_field :user_name %></br>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %></br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %></br>
+
+  <%= f.label :confirm_password %>
+  <%= f.password_field :password_confirmation %></br>
+
+  <%= f.check_box :remember_me %>
+  <%= f.label :remember_me %></br>
+
+  <%= f.submit 'submit' %>
+<% end %>

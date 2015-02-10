@@ -1,0 +1,129 @@
+<%= form_tag '/personal_infos' %>
+  <div class="bs-example">
+    <h2>Registration Process</h2>
+    <div class="form-group">
+      <%= label_tag 'user_name', "Username:" %>
+      <%= text_field_tag 'user_name', nil, class: 'form-control' %>
+      <%= label_tag 'email', "Email:" %>
+      <%= email_field_tag 'email', nil, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag 'dob', "Date Of Birth:" %>
+      <%= date_field_tag 'dob', class: 'form-control' %>
+      <%#= date_select_tag 'dob', class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= label_tag 'age', "Age:" %>
+      <%= number_field_tag 'age', nil, min: 18, max: 50, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <fieldset>
+      <legend>SSLC qualification details:</legend>
+      <%= label_tag 'school', "School:" %>
+      <%= text_field_tag 'school'%>
+      <%= label_tag 'board', "Board:" %>
+      <%= text_field_tag 'board'%>
+      <%= label_tag '%', "Percentage Obtained:" %>
+      <%= text_field_tag '%'%>
+      </fieldset>
+    </div>
+    <div class="form-group">
+      <fieldset>
+      <legend>HSC or Diplamo qualification details:</legend>
+      <%= radio_button_tag "hsc_dip", "HSC", selected: true %>
+      <%= label_tag 'hsc' %>
+      <%= radio_button_tag "hsc_dip", "Diplamo" %>
+      <%= label_tag 'diplamo' %></br>
+      <%= label_tag 'school', "School:" %>
+      <%= text_field_tag 'school'%>
+      <%= label_tag 'college', "College:" %>
+      <%= text_field_tag 'college'%>
+      <%= label_tag 'board', "Board:" %>
+      <%= text_field_tag 'board'%>
+      <%= label_tag '%', "Percentage Obtained:" %>
+      <%= text_field_tag '%'%>
+      </fieldset>
+    </div>
+    <fieldset>
+    <legend>Degree details:</legend>
+      <%= label_tag 'degree', "Degree:" %>
+      <%= select_tag 'degree', options_for_select([['Bachelor of Engineering', 1], ['Arts and Science', 2],  ['Master Of Business Applications', 3]]), prompt: "Select your degree" %>
+      <%= select_tag 'be', options_for_select(['ECE', 'CSE', 'IT', 'E&I']), prompt: "Select your course", class: "deg_select" %>
+      <%= select_tag 'aas', options_for_select(['Maths', 'Physics', 'Chemistry', 'Accounts']), prompt: "Select your course", class: "deg_select"%>
+      <%= select_tag 'mba', options_for_select(['HR', 'Business Administration']), prompt: "Select your course", class: "deg_select" %>
+    </fieldset>
+    <div class="description" >
+      <%= label_tag 'description', "Description:" %>
+      <%= text_area_tag 'description', nil, rows: 5 %>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <%= submit_tag 'submit'%>
+  <%#= link_to "back", root_path %>
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.description * {
+    vertical-align: middle;
+}
+.deg_select {
+   display: none;
+}
+.color {
+   color: blue;
+}
+.form-control {
+   width: 312px;
+}
+.bs-example {
+  margin-right: 121px;
+  margin-left: 121px;
+  background-color: #fff;
+  border-color: #ddd;
+  border-width: 1px;
+  border-radius: 4px 4px 0 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+</style>
+<script>
+  $("#degree").change(function() {
+    if ($('#degree').val() == 1) {
+      $('#be').show(); 
+      $('#aas').hide();
+      $('#mba').hide();
+    } else if ($('#degree').val() == 2) {
+      $('#aas').show();
+      $('#be').hide(); 
+      $('#mba').hide();
+    } else if ($('#degree').val() == 3) {
+      $('#mba').show();
+      $('#aas').hide();
+      $('#be').hide();
+    } 
+  });
+
+  
+  $('input:radio').click(function() {
+   alert($(this).val());
+  });
+
+  //$('#element').click(function() {
+    //if($('#radio_button').is(':checked')) { alert("it's checked"); }
+ // });
+</script>
